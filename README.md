@@ -59,4 +59,4 @@ public class BotWorker : BackgroundService
 ```
 **Result:**
 
-![img.png](./brand/img.png)
+![image](https://user-images.githubusercontent.com/69825463/172165744-11555796-6fc2-4fdb-a3a0-383506b494a3.png)
