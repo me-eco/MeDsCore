@@ -8,15 +8,15 @@ namespace MeDsCore.Interactions.ApplicationCommands.Modules;
 public abstract class ApplicationCommandModule
 {
     /// <summary>
-    /// Сервер, откуда была получена команда
+    /// Guild where the command was received
     /// </summary>
     public IDiscordGuild ContextGuild { get; internal set; }
     /// <summary>
-    /// Пользователь, который использовал команду
+    /// User, which used the command
     /// </summary>
     public IDiscordUser Issuer { get; internal set; }
     /// <summary>
-    /// Контекст команды, который содержит методы и свойства для работы с входящим Interaction
+    /// Context socket, which contains tools for working with Application command
     /// </summary>
     public ApplicationCommandSocket ContextSocket { get; internal set; }
     

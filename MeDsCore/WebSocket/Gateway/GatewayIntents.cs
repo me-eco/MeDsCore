@@ -40,6 +40,9 @@ public struct GatewayIntents
         None = new GatewayIntents(0),
         All = new GatewayIntents(0b1111111111111111);
 
+    /// <summary>
+    /// Integer value of intents
+    /// </summary>
     public int Intents { get; }
     
     private GatewayIntents(int intents)

@@ -29,5 +29,10 @@ public class DiscordClient
         await WebSocketClient.StartAsync();
     }
     
+    /// <summary>
+    /// Gets guild by a specified id
+    /// </summary>
+    /// <param name="guildId">ID</param>
+    /// <returns>If a guild exists, returns abstraction to use guild's API interface</returns>
     public Task<IDiscordGuild?> GetGuildAsync(ulong guildId) => RestClient.GetGuildAsync(guildId);
 }

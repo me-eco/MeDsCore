@@ -18,13 +18,11 @@ public class InteractionResponseDataOption
 
     public InteractionResponseDataOption Create(InteractionResponseDataOptionEntity entity)
     {
-        switch (entity.Type)
+        return entity.Type switch
         {
-            case ApplicationCommandOptionType.String:
-                return new InteractionResponseStringDataOption(entity);
-            default:
-                return new InteractionResponseDataOption(entity);
-        }
+            ApplicationCommandOptionType.String => new InteractionResponseStringDataOption(entity),
+            _ => new InteractionResponseDataOption(entity)
+        };
     }
 }
 

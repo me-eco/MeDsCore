@@ -1,7 +1,7 @@
 namespace MeDsCore.Utils;
 
 /// <summary>
-/// Вычисляет все права из данных битов
+/// Computes all permissions from a bitset
 /// </summary>
 public static class PermissionComputer
 {
@@ -27,7 +27,7 @@ public static class PermissionComputer
         for (var i = PermissionsArray.Length - 1; i >= 0; i--)
         {
             var permission = PermissionsArray[i];
-            if ((permissions & (long)permission) == (long)permission) //Если при битовом И равняется исходному, то возвращаем роль
+            if ((permissions & (long)permission) == (long)permission)
             {
                 yield return permission;
             }
