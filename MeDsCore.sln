@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeDsCore", "MeDsCore\MeDsCore.csproj", "{248F7041-0452-49D9-B928-8733067F2599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeDsCoreTests", "MeDsCoreTests\MeDsCoreTests.csproj", "{D2D1B6F6-5D3A-4C2D-A608-FB8637F4C91B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{248F7041-0452-49D9-B928-8733067F2599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{248F7041-0452-49D9-B928-8733067F2599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{248F7041-0452-49D9-B928-8733067F2599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{248F7041-0452-49D9-B928-8733067F2599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2D1B6F6-5D3A-4C2D-A608-FB8637F4C91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D1B6F6-5D3A-4C2D-A608-FB8637F4C91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D1B6F6-5D3A-4C2D-A608-FB8637F4C91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D1B6F6-5D3A-4C2D-A608-FB8637F4C91B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
