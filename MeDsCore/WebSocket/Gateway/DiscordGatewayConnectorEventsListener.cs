@@ -21,6 +21,9 @@ internal class DiscordGatewayConnectorEventsListener
         connector.RegisterCallback(ConnectorOnMessageReceived);
     }
 
+    /// <summary>
+    /// Adds a new messsage handler, which will be using for custom handling messages 
+    /// </summary>
     public void AddGatewayHandler(IGatewayMessageHandler handler)
     {
         _messageHandlers.Add(handler);

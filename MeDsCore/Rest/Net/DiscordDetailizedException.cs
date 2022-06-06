@@ -1,4 +1,3 @@
-using MeDsCore.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace MeDsCore.Rest.Net;

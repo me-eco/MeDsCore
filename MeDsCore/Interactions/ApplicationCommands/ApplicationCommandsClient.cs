@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 namespace MeDsCore.Interactions.ApplicationCommands;
 
 /// <summary>
-/// Клиент для работы с ApplicationCommands. Должен быть инициализирован после Ready события
+/// Client, which help to work with Application commands
 /// </summary>
 public class ApplicationCommandsClient : IGatewayMessageHandler
 {
@@ -53,15 +53,15 @@ public class ApplicationCommandsClient : IGatewayMessageHandler
 
     public event Func<ApplicationCommandSocket, Task>? OnApplicationCommandReceived;
     /// <summary>
-    /// Список всех команд (только для чтения)
+    /// Dictionary of all commands (readonly)
     /// </summary>
     public IReadOnlyDictionary<ulong, ApplicationCommandInfo> ApplicationCommandsRegistry => _appCommandsRegistry;
 
     /// <summary>
-    /// Получает приватную команду
+    /// Gets private command
     /// </summary>
-    /// <param name="guildId">Сервер, где находится команда</param>
-    /// <returns>Перечисление всех команд</returns>
+    /// <param name="guildId">Guild where command registered</param>
+    /// <returns>Enumeration of application commands</returns>
     public async Task<IEnumerable<ApplicationCommand>> GetPrivateApplicationCommandsAsync(ulong guildId)
     {
         var getPrivateConfig = ApplicationCommandsMethods.ConfigureGetPrivateApplicationCommands(_applicationId, guildId);
@@ -71,9 +71,9 @@ public class ApplicationCommandsClient : IGatewayMessageHandler
     }
 
     /// <summary>
-    /// Добавляет командный модуль
+    /// Adds new command module
     /// </summary>
-    /// <param name="moduleType">Тип модуля. Должен обязательно наследовать <see cref="ApplicationCommandModule"/></param>
+    /// <param name="moduleType">Type of module. Must inherit <see cref="ApplicationCommandModule"/></param>
     public void AddModule(Type moduleType)
     {
         var constructors = moduleType.GetConstructors();
@@ -116,7 +116,7 @@ public class ApplicationCommandsClient : IGatewayMessageHandler
     }
     
     /// <summary>
-    /// Выполняет регистрацию модулей и привязывает их к <see cref="ApplicationCommandsExecutor"/>, который запускает команды
+    /// Registers commands and starts them
     /// </summary>
     public async Task StartModulesAsync()
     {
@@ -130,7 +130,7 @@ public class ApplicationCommandsClient : IGatewayMessageHandler
     }
     
     /// <summary>
-    /// Получает все глобальные команды 
+    /// Gets all global commands 
     /// </summary>
     public async Task<IEnumerable<ApplicationCommand>> GetGlobalApplicationCommandsAsync()
     {

@@ -3,7 +3,7 @@ MeDsCore is an async Discord Bot API library. `me.ds` module uses this library t
 
 # Quick start
 1. Create a Service Worker project template
-2. Add in your  `configuration.json` the following JSON property
+2. Add in your  `appsettings.json` the following JSON property
 ```json
 "DsToken": "<YOUR_BEAUTIFUL_TOKEN>"
 ```

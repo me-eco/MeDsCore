@@ -1,7 +1,7 @@
 namespace MeDsCore.Rest.Net;
 
 /// <summary>
-/// Ошибка, которая была получена от Discord API
+/// An error, which received from Discord REST API
 /// </summary>
 public class DiscordError
 {

@@ -1,19 +1,16 @@
 namespace MeDsCore.Rest.Net.Proxy;
 
-/// <summary>
-/// Предоставляет интферейс для использования методов Discord API
-/// </summary>
 public interface IDiscordProxy
 {
     /// <summary>
-    /// Ping-ует Discord API Сервер
+    /// Pings Discord server
     /// </summary>
     /// <returns></returns>
     Task<long> PingAsync();
     /// <summary>
-    /// Отправляет HTTP запрос на API сервер Discord
+    /// Sends a HTTP request to the Discord API server
     /// </summary>
-    /// <param name="message"></param>
-    /// <returns></returns>
+    /// <param name="message">HTTP request message</param>
+    /// <returns>HTTP response</returns>
     Task<HttpResponseMessage> SendAsync(HttpRequestMessage message);
 }

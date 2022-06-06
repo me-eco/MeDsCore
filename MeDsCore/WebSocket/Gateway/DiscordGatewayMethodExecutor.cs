@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace MeDsCore.WebSocket.Gateway;
 
 /// <summary>
-/// Executes WS API methods
+/// Executes Gateway methods
 /// </summary>
 public class DiscordGatewayMethodExecutor : IDiscordGatewayMethodExecutor
 {

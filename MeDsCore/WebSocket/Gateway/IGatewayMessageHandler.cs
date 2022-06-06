@@ -1,13 +1,10 @@
 namespace MeDsCore.WebSocket.Gateway;
 
-/// <summary>
-/// Предоставляет абстракции для обработки с WS сообщения
-/// </summary>
 public interface IGatewayMessageHandler
 {
     /// <summary>
-    /// Обрабатывает сообщение с WS
+    /// Handles message from Gateway
     /// </summary>
-    /// <param name="message">Сообщение</param>
+    /// <param name="message">Message</param>
     Task ProcessMessageAsync(DiscordGatewayMessage message);
 }

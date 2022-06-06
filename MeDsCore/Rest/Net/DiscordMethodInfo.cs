@@ -1,7 +1,7 @@
 namespace MeDsCore.Rest.Net;
 
 /// <summary>
-/// Предназначен для хранения метаданных REST метода Discord
+/// Contains metadata about the REST API method
 /// </summary>
 public class DiscordMethodInfo
 {
@@ -15,7 +15,7 @@ public class DiscordMethodInfo
     }
 
     /// <summary>
-    /// Создает шаблонный <see cref="HttpRequestMessage"/> в соответствии с метаданными
+    /// Creates new scaffold <see cref="HttpRequestMessage"/> 
     /// </summary>
     public HttpRequestMessage ConfigureScaffoldHttpRequest()
     {
