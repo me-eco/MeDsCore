@@ -4,7 +4,7 @@ namespace MeDsCore.WebSocket.Gateway.Entities;
 
 public class UnavailableGuild
 {
-    public UnavailableGuild(GuildEntity guildEntity)
+    internal UnavailableGuild(GuildEntity guildEntity)
     {
         Id = ulong.Parse(guildEntity.Id);
     }

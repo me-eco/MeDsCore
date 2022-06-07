@@ -4,7 +4,7 @@ using MeDsCore.Base;
 
 namespace MeDsCore.Interactions.Base.Entities;
 
-public class InteractionBaseEntity
+internal class InteractionBaseEntity
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

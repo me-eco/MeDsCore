@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MeDsCore.Commands;
-using MeDsCore.Engine.Reflection;
+using MeDsCore.Engine;
 using Xunit;
 
 namespace MeDsCoreTests.Modules;
@@ -15,7 +14,7 @@ public class ModulesFilteringTests
     [InlineData(new[] {typeof(ClassA), typeof(ClassA)}, new[] {typeof(ClassA)})]
     public void FilterCommands_Test(Type[] types, Type[] commandsTypes)
     {
-        var commandModuleType = typeof(CommandModule);
+        var commandModuleType = typeof(TestBaseModule);
         var commandModulesFilter = new ModulesFilter(commandModuleType);
         IEnumerable<Type> commandModules = commandModulesFilter.Filter(types);
 
@@ -28,7 +27,9 @@ public class ModulesFilteringTests
         Assert.True(collection.All(x => commandsTypes.Any(z => z == x)));
     }
 
-    private class ClassA : CommandModule { }
+    private class TestBaseModule {}
+    
+    private class ClassA : TestBaseModule { }
     
     private class ClassB {}
 }

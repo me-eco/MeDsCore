@@ -9,7 +9,7 @@ namespace MeDsCore.WebSocket.Gateway.WebSocketEntities;
 /// </summary>
 public class WebSocketGuild : DiscordGuild
 {
-    public WebSocketGuild(IMethodExecutor executor, GuildEntity guildEntity) : base(executor, guildEntity)
+    internal WebSocketGuild(IMethodExecutor executor, GuildEntity guildEntity) : base(executor, guildEntity)
     {
         if (guildEntity.Channels == null || guildEntity.Members == null)
         {

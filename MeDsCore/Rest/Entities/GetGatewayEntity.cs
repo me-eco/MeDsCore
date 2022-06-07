@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace MeDsCore.Rest.Entities;
 
-public class GetGatewayEntity
+internal class GetGatewayEntity
 {
     [JsonPropertyName("url")]
     public string Url { get; set; }

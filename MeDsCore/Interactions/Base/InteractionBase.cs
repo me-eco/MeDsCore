@@ -6,7 +6,7 @@ using MeDsCore.Rest.Net;
 
 namespace MeDsCore.Interactions.Base;
 
-public class InteractionBase<TData>
+internal class InteractionBase<TData>
 {
     public InteractionBase(InteractionBaseEntity entity, IMethodExecutor restApiExecutor, IDiscordGuild? sourceGuild)
     {

@@ -10,7 +10,7 @@ namespace MeDsCore.Interactions.ApplicationCommands;
 public class ApplicationCommandSocket
 {
     private readonly IMethodExecutor _executor;
-    public InteractionBase<InteractionApplicationCommandResponse> InteractionResponse { get; }
+    internal InteractionBase<InteractionApplicationCommandResponse> InteractionResponse { get; }
     public IReadOnlyCollection<ApplicationArgument> Args { get; }
 
     public ApplicationArgument? this[string name]
@@ -29,7 +29,7 @@ public class ApplicationCommandSocket
         }
     }
 
-    public ApplicationCommandSocket(IMethodExecutor executor, InteractionBase<InteractionApplicationCommandResponse> interactionResponse)
+    internal ApplicationCommandSocket(IMethodExecutor executor, InteractionBase<InteractionApplicationCommandResponse> interactionResponse)
     {
         _executor = executor;
         InteractionResponse = interactionResponse;
@@ -44,7 +44,7 @@ public class ApplicationCommandSocket
         Args = args;
     }
 
-    public async Task ResponseMessageInteractionAsync(string content, bool tts = false)
+    internal async Task ResponseMessageInteractionAsync(string content, bool tts = false)
     {
         var responseInteractionMethodInfo =
             InteractionsMethods.ConfigureResponseInteractionMethodInfo(InteractionResponse.Id,

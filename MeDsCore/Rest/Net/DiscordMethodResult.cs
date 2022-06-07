@@ -3,7 +3,7 @@ namespace MeDsCore.Rest.Net;
 /// <summary>
 /// Результат использования меода Discord API 
 /// </summary>
-public class DiscordMethodResult
+internal class DiscordMethodResult
 {
     public DiscordMethodResult(bool isSuccess, Stream responseStream, DiscordError? error)
     {

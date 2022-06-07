@@ -1,6 +1,6 @@
 namespace MeDsCore.Rest.Net.Content;
 
-public class NoContentBuilder : IContentBuilder
+internal class NoContentBuilder : IContentBuilder
 {
     public void CreateContent(HttpRequestMessage requestMessage)
     {

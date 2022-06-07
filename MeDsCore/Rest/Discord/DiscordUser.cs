@@ -12,7 +12,7 @@ public class DiscordUser : IDiscordUser
 {
     private readonly IMethodExecutor _executor;
 
-    public DiscordUser(IMethodExecutor executor, UserEntity userEntity)
+    internal DiscordUser(IMethodExecutor executor, UserEntity userEntity)
     {
         _executor = executor;
         Id = ulong.Parse(userEntity.Id);

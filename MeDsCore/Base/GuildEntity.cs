@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace MeDsCore.Base;
 
-public class GuildEntity
+internal class GuildEntity
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

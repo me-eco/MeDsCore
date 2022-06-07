@@ -1,6 +1,6 @@
 namespace MeDsCore.Rest.Net.Methods;
 
-public static class GuildMethods
+internal static class GuildMethods
 {
     /// <summary>
     /// Метод получающий все каналы сервера

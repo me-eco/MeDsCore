@@ -2,7 +2,7 @@ using MeDsCore.Rest.Net;
 
 namespace MeDsCore.Interactions.ApplicationCommands;
 
-public static class ApplicationCommandsMethods
+internal static class ApplicationCommandsMethods
 {
     public static DiscordMethodInfo ConfigureCreateGlobalApplicationCommand(ulong applicationId)
     {

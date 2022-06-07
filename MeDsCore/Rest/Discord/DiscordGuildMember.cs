@@ -10,7 +10,7 @@ public class DiscordGuildMember : DiscordUser
 {
     private readonly IMethodExecutor _executor;
 
-    public DiscordGuildMember(IMethodExecutor executor, GuildMemberEntity memberEntity, IDiscordGuild source) : base(executor,
+    internal DiscordGuildMember(IMethodExecutor executor, GuildMemberEntity memberEntity, IDiscordGuild source) : base(executor,
         memberEntity.User!)
     {
         _executor = executor;
@@ -18,7 +18,7 @@ public class DiscordGuildMember : DiscordUser
         Nickname = memberEntity.Nick!;
     }
 
-    public DiscordGuildMember(IMethodExecutor executor, GuildMemberEntity memberEntity, UserEntity userEntity, IDiscordGuild source) : base(executor,
+    internal DiscordGuildMember(IMethodExecutor executor, GuildMemberEntity memberEntity, UserEntity userEntity, IDiscordGuild source) : base(executor,
         userEntity)
     {
         _executor = executor;

@@ -2,7 +2,7 @@ using System.Net.WebSockets;
 
 namespace MeDsCore.WebSocket.Base;
 
-public interface IWebSocketClient
+internal interface IWebSocketClient
 {
     /// <summary>
     /// True if WS opened

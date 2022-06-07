@@ -24,11 +24,11 @@ public class OptionChoice
     }
 
     /// <summary>
-    /// Название
+    /// Name
     /// </summary>
     public string Name { get; }
     /// <summary>
-    /// Значение. Может иметь слудющие типы: <see cref="string"/>, <see cref="int"/>, <see cref="double"/>
+    /// Value. Can be <see cref="string"/>, <see cref="int"/>, <see cref="double"/>
     /// </summary>
     public object Value { get; }
 }

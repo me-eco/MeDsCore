@@ -2,7 +2,7 @@ using System.Net.Http.Json;
 
 namespace MeDsCore.Rest.Net.Content;
 
-public class JsonContentBuilder : IContentBuilder
+internal class JsonContentBuilder : IContentBuilder
 {
     private readonly object _target;
 
