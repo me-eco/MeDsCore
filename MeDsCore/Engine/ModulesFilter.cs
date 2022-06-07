@@ -1,4 +1,4 @@
-namespace MeDsCore.Engine.Reflection;
+namespace MeDsCore.Engine;
 
 public class ModulesFilter
 {
