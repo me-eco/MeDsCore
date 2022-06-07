@@ -1,17 +1,13 @@
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using MeDsCore.Base;
 using MeDsCore.Rest.Discord;
-using MeDsCore.Rest.Entities;
-using MeDsCore.Rest.Entities.Args;
 using MeDsCore.Rest.Net;
 using MeDsCore.Rest.Net.Content;
-using MeDsCore.Rest.Net.Methods;
 using Moq;
 using Xunit;
 
-namespace BotyaDiscordTests.Rest.Implementations.Channels;
+namespace MeDsCoreTests.Rest.Implementations.Channels;
 
 public class SendMessageTests
 {
