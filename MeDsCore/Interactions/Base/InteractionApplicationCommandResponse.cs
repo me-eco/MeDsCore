@@ -10,7 +10,7 @@ public class InteractionApplicationCommandResponse
         Id = ulong.Parse(entity.Id);
         Name = entity.Name;
         Type = entity.Type;
-        GuildId = ulong.Parse(entity.GuildId);
+        GuildId = entity.GuildId != null ? ulong.Parse(entity.GuildId) : null;
 
         #region OPTIONS_IMPL
 
@@ -90,7 +90,7 @@ public class InteractionApplicationCommandResponse
     public ulong Id { get; }
     public string Name { get; }
     public ApplicationCommandType Type { get; }
-    public ulong GuildId { get; }
+    public ulong? GuildId { get; }
     public InteractionResponseDataOption[] Options { get; }
     public ResolvedData? ResolvedData { get; }
 }

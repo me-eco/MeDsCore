@@ -6,12 +6,18 @@ namespace MeDsCore.Interactions.Base.Entities;
 
 public class InteractionApplicationCommandResponseEntity
 {
-    [JsonPropertyName("id")] public string Id { get; set; }
-    [JsonPropertyName("name")] public string Name { get; set; }
-    [JsonPropertyName("type")] public ApplicationCommandType Type { get; set; }
-    [JsonPropertyName("guild_id")] public string GuildId { get; set; }
-    [JsonPropertyName("options")] public InteractionResponseDataOptionEntity[]? Options { get; set; } 
-    [JsonPropertyName("resolved")] public ResolvedDataEntity? ResolvedData { get; set; }
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+    [JsonPropertyName("type")]
+    public ApplicationCommandType Type { get; set; }
+    [JsonPropertyName("guild_id")]
+    public string? GuildId { get; set; }
+    [JsonPropertyName("options")]
+    public InteractionResponseDataOptionEntity[]? Options { get; set; } 
+    [JsonPropertyName("resolved")]
+    public ResolvedDataEntity? ResolvedData { get; set; }
 }
 
 public class ResolvedDataEntity
