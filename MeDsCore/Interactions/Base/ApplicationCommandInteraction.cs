@@ -9,7 +9,7 @@ using MeDsCore.Rest.Net.Methods;
 
 namespace MeDsCore.Interactions.Base;
 
-public class ApplicationCommandInteraction : InteractionBase<InteractionApplicationCommandResponse>
+internal class ApplicationCommandInteraction : InteractionBase<InteractionApplicationCommandResponse>
 {
     private ApplicationCommandInteraction(InteractionBaseEntity entity, IMethodExecutor restApiExecutor, IDiscordGuild? sourceGuild) : base(entity, restApiExecutor, sourceGuild)
     {

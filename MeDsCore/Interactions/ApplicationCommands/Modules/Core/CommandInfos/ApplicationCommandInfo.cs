@@ -28,7 +28,7 @@ public abstract class ApplicationCommandInfo
     [JsonIgnore]
     public MethodInfo ReflectionMethodInfo { get; }
 
-    public IContentBuilder ProvideContentBuilder()
+    internal IContentBuilder ProvideContentBuilder()
     {
         Console.WriteLine(JsonSerializer.Serialize(this, GetType()));
         return new JsonContentBuilder(this);

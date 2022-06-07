@@ -3,7 +3,7 @@ namespace MeDsCore.Rest.Net.Content;
 /// <summary>
 /// Конфигурирует HTTP контент для конкретного запроса
 /// </summary>
-public interface IContentBuilder
+internal interface IContentBuilder
 {
     /// <summary>
     /// Конфигурирует HTTP контент для конкретного запроса

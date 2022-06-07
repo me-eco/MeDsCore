@@ -1,6 +1,6 @@
 namespace MeDsCore.Rest.Net.Methods;
 
-public static class GatewayMethods
+internal static class GatewayMethods
 {
     public static DiscordMethodInfo ConfigureGetGatewayMethodInfo()
     {

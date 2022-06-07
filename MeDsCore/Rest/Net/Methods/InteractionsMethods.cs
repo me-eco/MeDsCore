@@ -1,6 +1,6 @@
 namespace MeDsCore.Rest.Net.Methods;
 
-public static class InteractionsMethods
+internal static class InteractionsMethods
 {
     public static DiscordMethodInfo ConfigureResponseInteractionMethodInfo(ulong interactionId, string token)
     {

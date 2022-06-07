@@ -8,7 +8,7 @@ namespace MeDsCore.Rest.Discord;
 
 public class DiscordTextChannel : DiscordChannel
 {
-    public DiscordTextChannel(IMethodExecutor executor, ChannelEntity entity) : base(executor, entity)
+    internal DiscordTextChannel(IMethodExecutor executor, ChannelEntity entity) : base(executor, entity)
     {
         
     }

@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace MeDsCore.Base;
 
-public class ChannelEntity
+internal class ChannelEntity
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

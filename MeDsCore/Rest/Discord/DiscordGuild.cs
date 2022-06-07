@@ -10,7 +10,7 @@ public class DiscordGuild : IDiscordGuild
 {
     private readonly IMethodExecutor _methodExecutor;
 
-    public DiscordGuild(IMethodExecutor methodExecutor, GuildEntity entity)
+    internal DiscordGuild(IMethodExecutor methodExecutor, GuildEntity entity)
     {
         _methodExecutor = methodExecutor;
         Id = ulong.Parse(entity.Id);

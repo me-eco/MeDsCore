@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace MeDsCore.Base;
 
-public class MessageEntity
+internal class MessageEntity
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

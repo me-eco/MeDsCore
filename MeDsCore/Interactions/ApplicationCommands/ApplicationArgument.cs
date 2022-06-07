@@ -8,7 +8,7 @@ namespace MeDsCore.Interactions.ApplicationCommands;
 
 public class ApplicationArgument
 {
-    public ApplicationArgument(InteractionResponseDataOption option, ResolvedData? resolvedData, IMethodExecutor methodExecutor)
+    internal ApplicationArgument(InteractionResponseDataOption option, ResolvedData? resolvedData, IMethodExecutor methodExecutor)
     {
         Name = option.Name;
         Type = option.Type;

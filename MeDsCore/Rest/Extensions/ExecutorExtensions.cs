@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MeDsCore.Rest.Extensions;
 
-public static class ExecutorExtensions
+internal static class ExecutorExtensions
 {
     /// <summary>
     /// Executes method without any HTTP Content
@@ -44,13 +44,12 @@ public static class ExecutorExtensions
             if (logger != null) throw new DiscordException("Failed to execute the REST API method", logger);
             throw new DiscordException("Failed to execute the REST API method");
         }
-        else if (!result.IsSuccess)
-        {
-            logger?.LogDebug("Failed to execute the REST API method");
-            return null;
-        }
 
-        return await JsonSerializer.DeserializeAsync<T>(result.ResponseStream);
+        if (result.IsSuccess) return await JsonSerializer.DeserializeAsync<T>(result.ResponseStream);
+        
+        logger?.LogDebug("Failed to execute the REST API method");
+        return null;
+
     }
 
     /// <summary>

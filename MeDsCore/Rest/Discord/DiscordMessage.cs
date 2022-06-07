@@ -11,7 +11,7 @@ public class DiscordMessage : IDiscordMessage
 {
     private readonly IMethodExecutor _executor;
 
-    protected DiscordMessage(IMethodExecutor executor, MessageEntity entity)
+    internal DiscordMessage(IMethodExecutor executor, MessageEntity entity)
     {
         _executor = executor;
         Id = ulong.Parse(entity.Id);
@@ -59,7 +59,7 @@ public class DiscordMessage : IDiscordMessage
         Guild = await GetSourceGuildAsync();
     }
     
-    public static async Task<DiscordMessage> InitializeAsync(IMethodExecutor executor, MessageEntity entity)
+    internal static async Task<DiscordMessage> InitializeAsync(IMethodExecutor executor, MessageEntity entity)
     {
         var msg = new DiscordMessage(executor, entity);
 

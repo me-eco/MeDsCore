@@ -1,6 +1,6 @@
 namespace MeDsCore.Interactions.Base.Entities;
 
-public enum InteractionType
+internal enum InteractionType
 {
     Ping = 1,
     ApplicationCommand = 2,

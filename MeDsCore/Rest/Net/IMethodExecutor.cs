@@ -2,7 +2,7 @@ using MeDsCore.Rest.Net.Content;
 
 namespace MeDsCore.Rest.Net;
 
-public interface IMethodExecutor
+internal interface IMethodExecutor
 {
     /// <summary>
     /// Выполняет методы API с помощью метаданных

@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace MeDsCore.Rest.Entities;
 
-public class ErrorEntity
+internal class ErrorEntity
 {
     [JsonPropertyName("code")]
     public int Code { get; set; }

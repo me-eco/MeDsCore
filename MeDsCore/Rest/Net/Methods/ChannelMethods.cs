@@ -1,6 +1,6 @@
 namespace MeDsCore.Rest.Net.Methods;
 
-public static class ChannelMethods
+internal static class ChannelMethods
 {
     /// <summary>
     /// Метод, который отправляет сообщение в канал

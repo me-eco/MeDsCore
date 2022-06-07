@@ -3,7 +3,7 @@ using MeDsCore.Interactions.Base.Entities;
 
 namespace MeDsCore.Interactions.Base;
 
-public class InteractionApplicationCommandResponse
+internal class InteractionApplicationCommandResponse
 {
     public InteractionApplicationCommandResponse(InteractionApplicationCommandResponseEntity entity)
     {
@@ -95,7 +95,7 @@ public class InteractionApplicationCommandResponse
     public ResolvedData? ResolvedData { get; }
 }
 
-public class ResolvedData
+internal class ResolvedData
 {
     public ResolvedData(IReadOnlyDictionary<ulong, UserEntity>? users,
         IReadOnlyDictionary<ulong, ChannelEntity>? channels, 

@@ -14,7 +14,7 @@ public sealed class WebSocketMessage : DiscordMessage
     public DiscordUser Author { get; private set; } = null!;
     public DiscordGuildMember? Member { get; private set; }
 
-    public new static async Task<WebSocketMessage> InitializeAsync(IMethodExecutor executor, MessageEntity entity)
+    internal new static async Task<WebSocketMessage> InitializeAsync(IMethodExecutor executor, MessageEntity entity)
     {
         var wsMessage = new WebSocketMessage(executor, entity);
         await wsMessage.LoadAsync();

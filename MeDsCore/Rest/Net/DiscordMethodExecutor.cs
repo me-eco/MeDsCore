@@ -9,7 +9,7 @@ namespace MeDsCore.Rest.Net;
 /// <summary>
 /// Выполняет методы Discord API 
 /// </summary>
-public class DiscordMethodExecutor : IMethodExecutor
+internal class DiscordMethodExecutor : IMethodExecutor
 {
     private readonly IDiscordProxy _proxy;
     private readonly AuthorizationProvider _authProvider;

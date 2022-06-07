@@ -1,6 +1,6 @@
 namespace MeDsCore.Rest.Net.Methods;
 
-public static class UserMethods
+internal static class UserMethods
 {
     public static DiscordMethodInfo ConfigureCreateDmMessageMethodInfo()
     {

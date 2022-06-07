@@ -3,7 +3,7 @@ namespace MeDsCore.Rest.Net;
 /// <summary>
 /// Contains metadata about the REST API method
 /// </summary>
-public class DiscordMethodInfo
+internal class DiscordMethodInfo
 {
     private readonly string _route;
     private readonly HttpMethod _httpMethod;

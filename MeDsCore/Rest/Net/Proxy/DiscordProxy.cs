@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MeDsCore.Rest.Net.Proxy;
 
-public class DiscordProxy : IDiscordProxy
+internal class DiscordProxy : IDiscordProxy
 {
     private readonly string _baseUrl;
     private readonly ILogger _logger;

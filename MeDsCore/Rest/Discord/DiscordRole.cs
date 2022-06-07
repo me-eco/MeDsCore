@@ -6,7 +6,7 @@ namespace MeDsCore.Rest.Discord;
 
 public class DiscordRole : IDiscordRole
 {
-    public DiscordRole(RoleEntity entity)
+    internal DiscordRole(RoleEntity entity)
     {
         Id = ulong.Parse(entity.Id);
         Name = entity.Name;

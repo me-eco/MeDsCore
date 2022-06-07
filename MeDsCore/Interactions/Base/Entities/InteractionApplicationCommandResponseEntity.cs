@@ -4,7 +4,7 @@ using MeDsCore.Base;
 
 namespace MeDsCore.Interactions.Base.Entities;
 
-public class InteractionApplicationCommandResponseEntity
+internal class InteractionApplicationCommandResponseEntity
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }
@@ -20,7 +20,7 @@ public class InteractionApplicationCommandResponseEntity
     public ResolvedDataEntity? ResolvedData { get; set; }
 }
 
-public class ResolvedDataEntity
+internal class ResolvedDataEntity
 {
     [JsonPropertyName("channels")]
     public Dictionary<string, ChannelEntity>? Channels { get; set; }
@@ -32,7 +32,7 @@ public class ResolvedDataEntity
     public Dictionary<string, RoleEntity>? Roles { get; set; }
 }
 
-public class InteractionResponseDataOptionEntity
+internal class InteractionResponseDataOptionEntity
 {
     [JsonPropertyName("name")] public string Name { get; set; }
     [JsonPropertyName("type")] public ApplicationCommandOptionType Type { get; set; }
