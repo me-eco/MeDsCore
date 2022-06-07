@@ -44,7 +44,7 @@ public class ApplicationCommandSocket
         Args = args;
     }
 
-    internal async Task ResponseMessageInteractionAsync(string content, bool tts = false)
+    public async Task ResponseMessageInteractionAsync(string content, bool tts = false)
     {
         var responseInteractionMethodInfo =
             InteractionsMethods.ConfigureResponseInteractionMethodInfo(InteractionResponse.Id,
