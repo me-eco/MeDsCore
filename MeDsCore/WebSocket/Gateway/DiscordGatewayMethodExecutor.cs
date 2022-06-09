@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MeDsCore.Abstractions;
+using MeDsCore.WebSocket.Base;
 using Microsoft.Extensions.Logging;
 
 namespace MeDsCore.WebSocket.Gateway;
@@ -10,12 +11,12 @@ namespace MeDsCore.WebSocket.Gateway;
 /// <summary>
 /// Executes Gateway methods
 /// </summary>
-public class DiscordGatewayMethodExecutor : IDiscordGatewayMethodExecutor
+internal class DiscordGatewayMethodExecutor : IDiscordGatewayMethodExecutor
 {
-    private readonly DiscordGatewayConnector _connector;
+    private readonly IWebSocketClient _connector;
     private readonly ILogger _logger;
 
-    public DiscordGatewayMethodExecutor(DiscordGatewayConnector connector, ILogger logger)
+    public DiscordGatewayMethodExecutor(IWebSocketClient connector, ILogger logger)
     {
         _connector = connector;
         _logger = logger;

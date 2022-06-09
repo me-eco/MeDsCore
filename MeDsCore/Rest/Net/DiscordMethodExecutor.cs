@@ -41,10 +41,10 @@ internal class DiscordMethodExecutor : IMethodExecutor
         if (discordResponse.StatusCode == HttpStatusCode.TooManyRequests)
         {
             _logger.LogDebug("Rate limit for {Path} exceeded", absPath);
-            return await ReexcuteMethodWithForceAsync(httpRequest, discordResponse);
+            return await ReExecuteMethodWithForceAsync(httpRequest, discordResponse);
         }
         
-        return await ContructMethodResultAsync(discordResponse);
+        return await ConstructMethodResultAsync(discordResponse);
     }
 
     /// <summary>
@@ -61,19 +61,19 @@ internal class DiscordMethodExecutor : IMethodExecutor
 
         if (discordResponse.StatusCode == HttpStatusCode.TooManyRequests)
         {
-            return await ReexcuteMethodWithForceAsync(message, discordResponse);
+            return await ReExecuteMethodWithForceAsync(message, discordResponse);
         }
 
-        return await ContructMethodResultAsync(discordResponse);
+        return await ConstructMethodResultAsync(discordResponse);
     }
 
     /// <summary>
-    /// Reexecutes the REST API Method with delay, which declared in a server's response
+    /// Re executes the REST API Method with delay, which declared in a server's response
     /// </summary>
     /// <param name="message">Message to send</param>
     /// <param name="invokerMessage">Message with a HTTP 429 Status Code</param>
     /// <returns>Forced the Discord REST API Method execution result</returns>
-    private async Task<DiscordMethodResult> ReexcuteMethodWithForceAsync(HttpRequestMessage message, HttpResponseMessage invokerMessage)
+    private async Task<DiscordMethodResult> ReExecuteMethodWithForceAsync(HttpRequestMessage message, HttpResponseMessage invokerMessage)
     {
         var tooManyRequestsEntity = await invokerMessage.Content!.ReadFromJsonAsync<TooManyRequestsEntity>();
 
@@ -81,11 +81,10 @@ internal class DiscordMethodExecutor : IMethodExecutor
         return await ExecuteMethodForceAsync(message);
     }
 
-    private static async Task<DiscordMethodResult> ContructMethodResultAsync(HttpResponseMessage discordResponse)
+    private static async Task<DiscordMethodResult> ConstructMethodResultAsync(HttpResponseMessage discordResponse)
     {
-        var error = await discordResponse.Content.ReadFromJsonAsync<DiscordError>();
-
         return new DiscordMethodResult(discordResponse.IsSuccessStatusCode,
-            await discordResponse.Content.ReadAsStreamAsync(), error);
-    }
+            new MemoryStream(await discordResponse.Content.ReadAsByteArrayAsync()),
+            await discordResponse.Content.ReadFromJsonAsync<DiscordError>());
+    }   
 }

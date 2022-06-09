@@ -45,6 +45,7 @@ internal static class ExecutorExtensions
             throw new DiscordException("Failed to execute the REST API method");
         }
 
+        
         if (result.IsSuccess) return await JsonSerializer.DeserializeAsync<T>(result.ResponseStream);
         
         logger?.LogDebug("Failed to execute the REST API method");
