@@ -21,36 +21,6 @@ internal class DiscordProxy : IDiscordProxy
 
         _client = new HttpClient();
     }
-    
-    public async Task<long> PingAsync()
-    {
-        try
-        {
-            var ping = new Ping();
-            var targetUri = new Uri(_baseUrl);
-            var options = new PingOptions()
-            {
-                DontFragment = true
-            };
-            string pingContent = "botbotyabotbotyabotbotyabotbotyabotbotya";
-
-            byte[] buffer = Encoding.ASCII.GetBytes(pingContent);
-            
-            
-            var reply = await ping.SendPingAsync(targetUri.Host, 1024, buffer, options);
-            var roundtripTime = reply.RoundtripTime;
-            
-            
-            _logger.LogTrace($"Discord API Ping {roundtripTime}");
-            
-            return roundtripTime;
-        }
-        catch (Exception)
-        {
-            _logger.LogError("Failed to ping Discord API");
-            return -1;
-        }
-    }
 
     public Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
     {
