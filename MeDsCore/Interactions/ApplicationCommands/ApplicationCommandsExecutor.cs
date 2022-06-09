@@ -3,6 +3,7 @@ using MeDsCore.Interactions.ApplicationCommands.Modules;
 using MeDsCore.Interactions.ApplicationCommands.Modules.Core.CommandInfos;
 using MeDsCore.Interactions.Base.Entities;
 using MeDsCore.Rest;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace MeDsCore.Interactions.ApplicationCommands;
@@ -31,37 +32,38 @@ internal class ApplicationCommandsExecutor
     /// <summary>
     /// Выполняет метод
     /// </summary>
-    /// <param name="appCommandSocket">Сокет команды</param>
+    /// <param name="appCommandContext">Сокет команды</param>
     /// <exception cref="InvalidOperationException">Вызывается, если выполнение команды провалилось</exception>
-    public async Task ExecuteCommandAsync(ApplicationCommandSocket appCommandSocket)
+    public async Task ExecuteCommandAsync(ApplicationCommandContext appCommandContext)
     {
-        var appCommand = appCommandSocket.InteractionResponse.Data; // Данные об команде приложения
-        var commandId = appCommand.Id;
+        var commandId = appCommandContext.InteractionResponse.Data.Id;
         var exeInfo = ValidateCommandSignature(commandId); // Валидация команды по id
         var methodInfo = exeInfo.ReflectionMethodInfo; // Данные о методе, полученные с помощь рефлексии
         var moduleType = methodInfo.DeclaringType!; // Тип модуля, в котором содержится команда
-        var constructorOfModule = moduleType.GetConstructors()[0]; // Единственный конструктор (гарантируется, что он такой один)
-        var parameters = constructorOfModule.GetParameters(); // Параметры конструктора
-        var argsForCtor = new object[parameters.Length];
         
-        for (var i = 0; i < parameters.Length; i++)
-        {
-            argsForCtor[i] = _services.GetService(parameters[i].ParameterType)!;
-        }
-
-        var moduleInstance = constructorOfModule.Invoke(argsForCtor);
-
-        if (moduleInstance is not ApplicationCommandModule)
+        if (moduleType != typeof(ApplicationCommandModule))
         {
             ThrowFailedToExecuteCommand();
         }
+        
+        var constructorOfModule = moduleType.GetConstructors()[0]; // Единственный конструктор (гарантируется, что он такой один)
+        var parameters = constructorOfModule.GetParameters(); // Параметры конструктора
+        var argsForCtor = new object[parameters.Length];
+        using var serviceScope = _services.CreateScope();
+        
+        for (var i = 0; i < parameters.Length; i++)
+        {
+            argsForCtor[i] = serviceScope.ServiceProvider.GetService(parameters[i].ParameterType)!;
+        }
+
+        var moduleInstance = constructorOfModule.Invoke(argsForCtor);
         var commandModule = (ApplicationCommandModule)moduleInstance;
         
-        await FillCommandModuleAsync(appCommandSocket, commandModule);
+        await FillCommandModuleAsync(appCommandContext, commandModule);
 
         var commandReflectedParameters = methodInfo.GetParameters();
         var commandParameters = new object?[commandReflectedParameters.Length];
-        var argsArray = appCommandSocket.Args.ToArray();
+        var argsArray = appCommandContext.Args.ToArray();
         
         for (var i = 0; i < commandParameters.Length; i++) //Преобразовываем объекты, полученные от Discord Gateway в аргументы
         {
@@ -79,14 +81,19 @@ internal class ApplicationCommandsExecutor
             };
         }
 
-        methodInfo.Invoke(commandModule, commandParameters);
-        GC.Collect(0); //Очищаем нулевую генерацию мусора, чтобы удалить объекты, которые были созданы в процессе выполнения команды
+        var invocationResult = methodInfo.Invoke(commandModule, commandParameters);
+
+        if (invocationResult is Task commandTask)
+        {
+            await commandTask;
+        }
+        
+        GC.Collect(0);
     }
 
     private ApplicationCommandInfo ValidateCommandSignature(ulong commandId)
     {
         var containsCommandInRegistry = _registry.TryGetValue(commandId, out var appCommandExecutionInfo);
-        _logger.LogTrace($"Preparing for execution application command ({commandId}) started");
 
         if (!containsCommandInRegistry)
         {
@@ -99,14 +106,14 @@ internal class ApplicationCommandsExecutor
         return appCommandExecutionInfo;
     }
 
-    private async Task FillCommandModuleAsync(ApplicationCommandSocket socket, ApplicationCommandModule module)
+    private async Task FillCommandModuleAsync(ApplicationCommandContext context, ApplicationCommandModule module)
     {
-        var ctxGuildId = socket.InteractionResponse.GuildId;
+        var ctxGuildId = context.InteractionResponse.GuildId;
         var ctxGuild = (await _restClient.GetGuildAsync(ctxGuildId))!;
 
-        module.Issuer = socket.InteractionResponse.Member ?? socket.InteractionResponse.User;
-        module.ContextGuild = ctxGuild;
-        module.ContextSocket = socket;
+        module.Issuer = context.InteractionResponse.Member ?? context.InteractionResponse.User;
+        module.Guild = ctxGuild;
+        module.Context = context;
     }
     
     private void ThrowFailedToExecuteCommand(string msg = "Failed to execute application command")
