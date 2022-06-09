@@ -10,7 +10,7 @@ public abstract class ApplicationCommandModule
     /// <summary>
     /// Guild where the command was received
     /// </summary>
-    public IDiscordGuild ContextGuild { get; internal set; }
+    public IDiscordGuild Guild { get; internal set; }
     /// <summary>
     /// User, which used the command
     /// </summary>
@@ -18,6 +18,6 @@ public abstract class ApplicationCommandModule
     /// <summary>
     /// Context socket, which contains tools for working with Application command
     /// </summary>
-    public ApplicationCommandSocket ContextSocket { get; internal set; }
+    public ApplicationCommandContext Context { get; internal set; }
     
 }

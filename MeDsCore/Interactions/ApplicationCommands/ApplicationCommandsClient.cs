@@ -51,7 +51,7 @@ public class ApplicationCommandsClient : IGatewayMessageHandler
         _applicationCommandsExecutor = new ApplicationCommandsExecutor(_appCommandsRegistry, services, logger, restClient);
     }
 
-    public event Func<ApplicationCommandSocket, Task>? OnApplicationCommandReceived;
+    public event Func<ApplicationCommandContext, Task>? OnApplicationCommandReceived;
     /// <summary>
     /// Dictionary of all commands (readonly)
     /// </summary>
@@ -153,7 +153,7 @@ public class ApplicationCommandsClient : IGatewayMessageHandler
         if (interactionEntity.Type == InteractionType.ApplicationCommand)
         {
             var interBase = await ApplicationCommandInteraction.InitializeAsync(interactionEntity, _methodExecutor);
-            var socket = new ApplicationCommandSocket(_methodExecutor, interBase);
+            var socket = new ApplicationCommandContext(_methodExecutor, interBase);
             OnApplicationCommandReceived?.Invoke(socket);
             if(_appCommandsRegistry.Count > 0) await _applicationCommandsExecutor.ExecuteCommandAsync(socket);
         }
