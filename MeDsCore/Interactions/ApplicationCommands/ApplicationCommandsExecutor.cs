@@ -41,7 +41,7 @@ internal class ApplicationCommandsExecutor
         var methodInfo = exeInfo.ReflectionMethodInfo; // Данные о методе, полученные с помощь рефлексии
         var moduleType = methodInfo.DeclaringType!; // Тип модуля, в котором содержится команда
         
-        if (moduleType != typeof(ApplicationCommandModule))
+        if (moduleType.BaseType! != typeof(ApplicationCommandModule))
         {
             ThrowFailedToExecuteCommand();
         }
