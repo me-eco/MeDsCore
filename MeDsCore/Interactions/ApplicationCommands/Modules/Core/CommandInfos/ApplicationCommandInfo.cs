@@ -30,7 +30,6 @@ public abstract class ApplicationCommandInfo
 
     internal IContentBuilder ProvideContentBuilder()
     {
-        Console.WriteLine(JsonSerializer.Serialize(this, GetType()));
         return new JsonContentBuilder(this);
     }
 }
