@@ -126,6 +126,7 @@ public class ApplicationCommandsClient : IGatewayMessageHandler
         {
             var commandId = await _appCommandsRegistrator.CreateCommandAsync(commandInfo);
             _appCommandsRegistry.Add(commandId, commandInfo);
+            await Task.Delay(10);
         }
     }
     
