@@ -88,7 +88,7 @@ public class DiscordGatewayConnector : IAsyncDisposable, IWebSocketClient
 
                 if (countReceived > 0)
                 {
-                    _logger.LogTrace($"{countReceived} byte(-s) received from Discord Gateway");
+                    _logger.LogTrace("{CountReceived} byte(-s) received from Discord Gateway", countReceived);
 
                     var subBuffer = new byte[countReceived];
                     

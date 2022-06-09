@@ -7,7 +7,7 @@ using MeDsCore.Rest.Net.Methods;
 
 namespace MeDsCore.Interactions.ApplicationCommands;
 
-public class ApplicationCommandSocket
+public class ApplicationCommandContext
 {
     private readonly IMethodExecutor _executor;
     internal InteractionBase<InteractionApplicationCommandResponse> InteractionResponse { get; }
@@ -29,7 +29,7 @@ public class ApplicationCommandSocket
         }
     }
 
-    internal ApplicationCommandSocket(IMethodExecutor executor, InteractionBase<InteractionApplicationCommandResponse> interactionResponse)
+    internal ApplicationCommandContext(IMethodExecutor executor, InteractionBase<InteractionApplicationCommandResponse> interactionResponse)
     {
         _executor = executor;
         InteractionResponse = interactionResponse;

@@ -138,7 +138,7 @@ public class DiscordWebSocketClient : IAsyncDisposable, IGatewayMessageHandler
         if (gatewayEntity == null) 
             throw new DiscordException("Failed to deserialize gateway entity response", _logger);
         
-        _logger.LogTrace("Discord Gateway: " + gatewayEntity.Url);
+        _logger.LogTrace("Discord Gateway: {Url}", gatewayEntity.Url);
         
         return new Uri(gatewayEntity.Url + "?v=9&encoding=json");
     }
